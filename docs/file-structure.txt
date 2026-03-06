@@ -1,0 +1,10 @@
+src/
+ ├─ components/      // component dùng chung
+ ├─ pages/           // các trang
+ ├─ services/        // gọi API
+ ├─ hooks/           // custom hook
+ ├─ utils/           // hàm dùng chung
+ ├─ layouts/         // layout
+ ├─ assets/          // ảnh, css
+ ├─ routes/          // react-router
+ └─ App.jsx
