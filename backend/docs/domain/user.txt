@@ -1,0 +1,2 @@
+- Người dùng quên mật khẩu -> Nhập tên email/số điện thoại tùy phương thức xác thực -> hệ thống gửi
+code để xác thực -> người dùng nhập code -> hệ thống verify code -> cho phép nhập mật khẩu mới

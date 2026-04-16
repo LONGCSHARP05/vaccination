@@ -1,0 +1,38 @@
+backend/
+├── main.py                 # entry point (đưa từ static/covers về đây)
+├── database.py
+├── auth.py                 # JWT, get_current_user (hoặc chuyển vào core/)
+├── models.py
+├── core/                    # (đề xuất)
+│   ├── config.py
+│   └── deps.py              # get_db, get_current_user, check_permission
+├── routers/
+│   ├── auth.py
+│   ├── users.py
+│   ├── patients.py          # thiếu
+│   ├── facilities.py       # thiếu
+│   ├── vaccines.py         # thiếu
+│   ├── inventory.py        # thiếu
+│   ├── appointments.py     # thiếu
+│   ├── vaccination_sessions.py  # thiếu
+│   ├── adverse_reactions.py    # thiếu
+│   ├── reports.py          # thiếu (views)
+│   └── roles.py            # thiếu (role/permission)
+├── schemas/
+│   ├── __init__.py         # thiếu – export tất cả schema
+│   ├── auth.py             # hoặc giữ schemas.py
+│   ├── patient.py          # thiếu
+│   ├── facility.py         # thiếu
+│   ├── vaccine.py          # thiếu
+│   ├── appointment.py     # thiếu
+│   └── ...
+├── services/               # (đề xuất) logic nghiệp vụ
+│   ├── appointment.py
+│   ├── vaccination.py
+│   └── inventory.py
+├── migrations/             # Alembic (thiếu)
+│   └── versions/
+├── tests/                  # (đề xuất)
+│   └── ...
+├── static/                 # chỉ file tĩnh, không chứa main.py
+└── requirements.txt

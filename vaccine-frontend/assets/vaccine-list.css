@@ -1,0 +1,354 @@
+/* Vaccine List Styles */
+.vaccine-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vaccine-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.vaccine-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.vaccine-card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 15px;
+}
+
+.vaccine-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  flex: 1;
+  word-break: break-word;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.status-badge.active {
+  background: #51cf66;
+  color: white;
+}
+
+.status-badge.inactive {
+  background: #ff6b6b;
+  color: white;
+}
+
+.vaccine-card-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vaccine-info {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.vaccine-info:last-child {
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.vaccine-info .label {
+  font-weight: 600;
+  color: #667eea;
+  font-size: 13px;
+}
+
+.vaccine-info .value {
+  color: #555;
+  word-break: break-word;
+}
+
+.vaccine-description {
+  color: #888;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.vaccine-card-footer {
+  padding: 15px 20px;
+  background: #f9f9f9;
+  border-top: 1px solid #f0f0f0;
+}
+
+.view-details-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-details-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.view-details-btn:active {
+  transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .vaccine-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  .vaccine-card-header {
+    padding: 15px;
+  }
+
+  .vaccine-name {
+    font-size: 16px;
+  }
+
+  .vaccine-card-body {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .vaccine-info {
+    grid-template-columns: 70px 1fr;
+    gap: 8px;
+  }
+
+  .vaccine-info .label {
+    font-size: 12px;
+  }
+
+  .vaccine-description {
+    font-size: 13px;
+  }
+
+  .view-details-btn {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vaccine-list {
+    grid-template-columns: 1fr;
+  }
+
+  .vaccine-card-header {
+    padding: 12px;
+  }
+
+  .vaccine-name {
+    font-size: 15px;
+  }
+
+  .vaccine-card-body {
+    padding: 12px;
+  }
+
+  .vaccine-info {
+    grid-template-columns: 60px 1fr;
+  }
+
+  .vaccine-info .label {
+    font-size: 11px;
+  }
+
+  .vaccine-card-footer {
+    padding: 12px;
+  }
+
+  .view-details-btn {
+    padding: 10px;
+  }
+}
+
+/* Table View Styles */
+.vaccine-table-wrapper {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in;
+}
+
+.vaccine-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.vaccine-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.vaccine-table thead th {
+  padding: 16px 12px;
+  text-align: left;
+  font-weight: 600;
+  border: none;
+}
+
+.vaccine-table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+}
+
+.vaccine-table tbody tr:hover {
+  background: #f9f9f9;
+}
+
+.vaccine-table tbody tr.vaccine-row {
+  animation: slideIn 0.3s ease-in;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.vaccine-table tbody td {
+  padding: 16px 12px;
+  color: #333;
+  vertical-align: middle;
+}
+
+.vaccine-table tbody td:nth-child(2) {
+  font-weight: 500;
+  color: #667eea;
+}
+
+.vaccine-table tbody td .status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.vaccine-table tbody td .status-badge.active {
+  background: #d4edda;
+  color: #155724;
+}
+
+.vaccine-table tbody td .status-badge.inactive {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+/* Table Responsive Design */
+@media (max-width: 1024px) {
+  .vaccine-table {
+    font-size: 13px;
+  }
+
+  .vaccine-table thead th,
+  .vaccine-table tbody td {
+    padding: 12px 8px;
+  }
+
+  .vaccine-table thead th:nth-child(5),
+  .vaccine-table tbody td:nth-child(5) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .vaccine-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .vaccine-table {
+    font-size: 12px;
+    min-width: 600px;
+  }
+
+  .vaccine-table thead th,
+  .vaccine-table tbody td {
+    padding: 10px 6px;
+  }
+
+  .action-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

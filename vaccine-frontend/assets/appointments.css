@@ -1,0 +1,303 @@
+/* File: assets/appointments.css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-page {
+  min-height: 100vh;
+  /* background-color: #5c5eda;  <-- Hãy thử COMMENT dòng này lại hoặc đổi thành màu xám nhạt */
+  background-color: #f4f7f6; 
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  color: #333; /* Đổi màu chữ mặc định sang tối để dễ đọc trên nền sáng */
+}
+
+/* ===================================
+   1. HEADER TÁCH BIỆT (Viền đậm)
+   =================================== */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background-color: #f4f7f6; 
+  border-bottom: 2px solid #2b02b0; /* Viền ngăn cách */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  flex-grow: 1;
+  color: rgb(112, 176, 201);
+  margin: 0;
+}
+
+.btn-logout {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+.btn-logout:hover { opacity: 0.8; }
+
+/* ===================================
+   2. KHUNG NỘI DUNG (Căn giữa, bóp viền)
+   =================================== */
+.main-content {
+  width: 100%;       /* Thay max-width bằng width 100% */
+  max-width: none;   /* Loại bỏ giới hạn 1200px */
+  margin: 0;         /* Loại bỏ căn giữa tự động */
+  padding: 0;
+}
+
+/* ===================================
+   3. THANH CÔNG CỤ (View Toggle + Filter + Search)
+   =================================== */
+.controls-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+/* BỘ CHUYỂN ĐỔI CHẾ ĐỘ XEM (Viên thuốc chứa Icon SVG) */
+.view-toggle {
+  display: flex;
+  border-radius: 9999px; /* Bo tròn viên thuốc */
+  overflow: hidden;
+  border: 2px solid #e2e8f0; /* Viền xám mỏng */
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.btn-view {
+  width: 56px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.btn-view + .btn-view {
+  border-left: 2px solid #e2e8f0; /* Vạch ngăn cách ở giữa 2 nút */
+}
+
+/* Định dạng cho Icon SVG */
+.btn-view svg {
+  width: 22px;
+  height: 22px;
+  stroke: #64748b; /* Màu icon xám nhạt lúc chưa chọn */
+  transition: all 0.2s;
+}
+
+/* TRẠNG THÁI ACTIVE: Nền xanh nhạt, icon đen (Giống ảnh bạn gửi) */
+.btn-view.active {
+  background-color: #cceaff; /* Màu nền xanh nhạt */
+}
+
+.btn-view.active svg {
+  stroke: #0f172a; /* Icon chuyển sang màu đen đậm khi được chọn */
+}
+
+/* BỘ LỌC VÀ TÌM KIẾM */
+.filter-select {
+  padding: 10px 16px;
+  height: 44px;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+}
+
+.search-wrapper-inline {
+  flex-grow: 1; /* Chiếm hết khoảng trống còn lại */
+  background-color: white;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.search-input-inline {
+  width: 100%;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  color: #333;
+}
+.search-input-inline::placeholder { color: #9ca3af; }
+
+.info-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+/* ===================================
+   4. GIAO DIỆN BẢNG (LIST VIEW) - Kích thước lớn
+   =================================== */
+.table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #f8fafc;
+  padding: 20px 24px; /* Làm to bảng */
+  font-size: 15px;
+  color: #475569;
+  font-weight: 700;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.custom-table td {
+  padding: 20px 24px; /* Làm to nội dung */
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.custom-table tbody tr:hover { background-color: #f1f5f9; }
+
+/* ===================================
+   5. GIAO DIỆN THẺ (CARD GRID) - 3 cột, kích thước lớn
+   =================================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Bắt buộc 3 thẻ 1 hàng */
+  gap: 30px; /* Khoảng cách rộng rãi */
+}
+
+.appt-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-size: 16px; /* Chữ to hơn */
+}
+
+.card-header-color {
+  background: linear-gradient(135deg, #717cf7 0%, #a25bc2 100%);
+  padding: 18px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header-color h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+.status-active { background-color: #10b981; }
+.status-pending { background-color: #f59e0b; }
+
+.card-body-white {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  color: #333;
+}
+
+.info-row {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.info-label {
+  width: 90px;
+  color: #555;
+  font-weight: 600;
+}
+
+.info-value {
+  flex-grow: 1;
+  color: #222;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: #666;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  border-top: 1px dashed #eee;
+}
+
+.btn-detail {
+  width: 100%;
+  padding: 14px;
+  background-color: #5a67d8;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: auto;
+  transition: background 0.2s;
+}
+.btn-detail:hover { background-color: #434190; }
+
+.btn-action-sm {
+  background-color: #5a67d8; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 14px;
+}
+.btn-action-sm:hover { background-color: #434190; }
+
+/* ===================================
+   6. CỬA SỔ NỔI (MODAL)
+   =================================== */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: white; border-radius: 12px; width: 90%; max-width: 500px; color: #333; overflow: hidden; }
+.modal-header { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; font-size: 20px; font-weight: bold; }
+.btn-close { background: none; border: none; font-size: 20px; cursor: pointer; color: #666; }
+.modal-body { padding: 20px; }
+.modal-body label { display: block; font-weight: 600; margin-bottom: 6px; color: #555; }
+.modal-body input, .modal-body select { width: 100%; padding: 12px; margin-bottom: 16px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; }
+.modal-footer { padding: 16px 20px; background: #f9fafb; display: flex; justify-content: flex-end; gap: 10px; }
+.btn-delete { background: #ef4444; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+.btn-save { background: #5a67d8; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+.btn-cancel { background: #6b7280; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; }

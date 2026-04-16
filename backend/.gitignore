@@ -1,0 +1,30 @@
+# --- Python rác (Compiled files) ---
+**/__pycache__/
+*.py[cod]
+*$py.class
+**/.venv/
+**/venv/
+**/env/
+
+# --- Thông tin nhạy cảm (QUAN TRỌNG NHẤT) ---
+**/core/config.py
+**/core/auth.py
+**/.env
+**/.env.local
+.env.*
+backend/core/config.py
+# Nếu bạn để mật khẩu trong database.py thì cũng nên xem xét chặn hoặc tách ra .env
+# backend/database.py 
+
+# --- Database cục bộ (Nếu dùng SQLite để test) ---
+*.db
+
+
+# --- IDE & OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Log dự án ---
+*.log

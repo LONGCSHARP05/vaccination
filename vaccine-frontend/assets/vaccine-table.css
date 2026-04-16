@@ -1,0 +1,64 @@
+.vaccine-table-container {
+  overflow-x: auto; /* For responsiveness on small screens */
+  width: 100%;
+}
+
+.vaccine-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 0.9rem;
+}
+
+.vaccine-table th,
+.vaccine-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+
+.vaccine-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+.vaccine-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.vaccine-table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+.vaccine-table .status {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: 500;
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+.vaccine-table .status.active {
+  background-color: #e6f7f0;
+  color: #00875a;
+}
+
+.vaccine-table .status.inactive {
+  background-color: #ffebe6;
+  color: #de350b;
+}
+
+.vaccine-table .view-details-btn {
+  background-color: transparent;
+  color: #4c6ef5;
+  border: 1px solid #4c6ef5;
+}
