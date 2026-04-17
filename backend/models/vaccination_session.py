@@ -1,12 +1,24 @@
 # Bảng VaccinationSession, VaccinationDetail - buổi tiêm và chi tiết mũi (AdministeredByID -> StaffFacility)
 from datetime import datetime
-from sqlalchemy import Column, Integer, DateTime, Text, ForeignKey
+from sqlalchemy import Column, Integer, DateTime, Text, ForeignKey, String
 from sqlalchemy.orm import relationship
 
 from db.base import Base
 from models.add_uuid import UuidMixin
 
-
+class Vaccination_Status:
+# 'RECEIVED', 'SCREENED', 'VACCINATED', 'OBSERVED', 'COMPLETED'
+    RECEIVED = "RECEIVED"
+    SCREENED = "SCREENED"
+    VACCINATED = "VACCINATED"
+    OBSERVED = "OBSERVED"
+    COMPLETED = "COMPLETED"
+    
+class Screening_Result:
+# ('APPROVED', 'DELAYED', 'REJECTED')
+    APPROVED = "APPROVED"
+    DELAYED = "DELAYED"
+    REJECTED = "REJECTED"
 class VaccinationSession(Base, UuidMixin):
     __tablename__ = "VaccinationSession"
 
@@ -16,7 +28,9 @@ class VaccinationSession(Base, UuidMixin):
     AppointmentID = Column(Integer, ForeignKey("Appointment.AppointmentID"), nullable=True)
     VaccinationDate = Column(DateTime, nullable=False)
     Note = Column(Text, nullable=True)
-
+    Status = Column(String(50), nullable=True)  # Sử dụng enum Vaccination_Status
+    ScreeningResults = Column(String(50), nullable=True)
+    
     patient = relationship("Patient", back_populates="vaccination_sessions")
     staff = relationship("Staff", back_populates="vaccination_sessions")
     appointment = relationship("Appointment", back_populates="vaccination_sessions")

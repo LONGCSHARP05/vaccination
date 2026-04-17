@@ -22,7 +22,7 @@ function Login() {
       localStorage.removeItem("rememberedEmail");
     }
 
-    navigate("/vaccines");
+    navigate("/home");
   };
 
   const handleForgotPassword = () => {
