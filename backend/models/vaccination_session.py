@@ -29,7 +29,8 @@ class VaccinationSession(Base, UuidMixin):
     VaccinationDate = Column(DateTime, nullable=False)
     Note = Column(Text, nullable=True)
     Status = Column(String(50), nullable=True)  # Sử dụng enum Vaccination_Status
-    ScreeningResults = Column(String(50), nullable=True)
+    ScreeningResult = Column(String(50), nullable=True)
+    CreatedAt = Column(DateTime, default=datetime.now)
     
     patient = relationship("Patient", back_populates="vaccination_sessions")
     staff = relationship("Staff", back_populates="vaccination_sessions")

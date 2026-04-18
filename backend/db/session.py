@@ -15,9 +15,16 @@ from core.config import settings
 
 engine = create_engine(
     settings.SQLALCHEMY_DATABASE_URL,
+    pool_pre_ping=True,
+    pool_recycle=1800,
+    pool_size=10,
+    max_overflow=20
 ) # tạo engine kết nối với database
 
-SessionLocal = sessionmaker(bind=engine) # tạo session để làm việc với database
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine) # tạo session để làm việc với database
 # bind là liên kết session với engine đã tạo
 
 

@@ -16,6 +16,17 @@ class PatientBase(BaseModel): # base schema dùng chung cho tất cả các phư
         'from_attributes':True
     }
     
+class PatientCheckInResponse(BaseModel):
+    PatientCode: str
+    FullName: str
+    Phone: Optional[str] = None
+    Address: Optional[str] = None
+    DateOfBirth: date
+    Gender: str
+    
+    # THÊM DÒNG NÀY ĐỂ PYDANTIC CHẤP NHẬN SQLALCHEMY OBJECT
+    class Config:
+        from_attributes = True
 class PatientDetail(PatientBase):
     PatientCode: str
     CitizenID: Optional[str] = None

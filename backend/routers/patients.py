@@ -4,6 +4,7 @@ from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status   
 from sqlalchemy.orm import Session
+import db
 from models.vaccination_session import VaccinationDetail, VaccinationSession
 from models.appointment import Appointment
 from schemas.appointment import ListAppointmentResponse
@@ -12,11 +13,11 @@ import models
 from core.security_models import CurrentUser
 from db.session import SessionLocal
 from models import Patient, UserAccount
-from schemas.patient import CreatePatientRequest, GuardianResponse, PatientListVaccinationResponse, PatientDetail, ListPatientResponse, PatientListItem
+from schemas.patient import CreatePatientRequest, GuardianResponse, PatientCheckInResponse, PatientListVaccinationResponse, PatientDetail, ListPatientResponse, PatientListItem
 from core.deps import get_current_user, get_db
 from core.permission import require_permission
 
-from sqlalchemy import  Integer, func, or_
+from sqlalchemy import  Integer, func, or_, text
 from core.deps import get_db
 from sqlalchemy.orm import joinedload
 
@@ -124,7 +125,7 @@ def create_patient(data: CreatePatientRequest,
     }
     
 
-@router.get("/search", response_model=ListPatientResponse)
+@router.get("/search-and-filter", response_model=ListPatientResponse)
 def search_patient(keyword: Optional[str] = None, 
                    gender: Optional[GenderEnum] = Query(None, description="Giới tính: Nam, Nữ, Khác"),
                    profile_type: Optional[Profile_Type] = Query(None, description="Loại hồ sơ: Bệnh nhân, Người thân"),
@@ -175,8 +176,9 @@ def search_patient(keyword: Optional[str] = None,
 def get_patient_detail(patient_uuid: str, db: Session = Depends(get_db)):
     patient_detail = db.query(Patient).filter(Patient.uuid == patient_uuid).first()
     if not patient_detail:
-        raise HTTPException(status_code=404, detail="Không tìm thấy bệnh nhân!")
+        raise HTTPException(status_code=404, detail="Không tìm thấy bệnh nhân nào!")
     return patient_detail
+
 
 @router.get("/{patient_uuid}/appointments", response_model=ListAppointmentResponse)
 def get_patient_appointments(patient_uuid: str, 
@@ -228,3 +230,17 @@ def get_patient_vaccinations(patient_uuid: str,
         "page_size": limit,
         "data": vaccinations
     }
+    
+@router.get("/search-identifier/", response_model=PatientCheckInResponse)
+def search_patient_by_identifier(
+    identifier: str = Query(..., description="Nhập CCCD hoặc số điện thoại của bệnh nhân"),
+    db: Session = Depends(get_db)
+):
+    """API tìm kiếm bệnh nhân phục vụ màn check-in của lễ tân"""
+    patient = db.query(Patient).filter(
+        or_(Patient.CitizenID == identifier, 
+            Patient.Phone == identifier)).first()
+        
+    if not patient:
+        raise HTTPException(status_code=404, detail="Không tìm thấy bệnh nhân nào với thông tin này!")
+    return patient

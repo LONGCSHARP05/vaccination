@@ -16,13 +16,15 @@ function Login() {
     e.preventDefault();
     const success = await loginUser(useridentifier, password);
     if (success) 
+    {
       if (rememberMe) {
       localStorage.setItem("rememberedEmail", useridentifier);
-    } else {
-      localStorage.removeItem("rememberedEmail");
-    }
+      } else {
+        localStorage.removeItem("rememberedEmail");
+      }
 
-    navigate("/home");
+    navigate("/dashboard");
+    }
   };
 
   const handleForgotPassword = () => {

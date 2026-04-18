@@ -13,7 +13,8 @@ export function usePatients() {
       const data = await getPatients();
       setPatients(data);
     } catch (err) {
-      setError("Không thể tải danh sách hồ sơ");
+        console.error(err);
+        setError("Lỗi khi tải danh sách bệnh nhân");
     } finally {
       setLoading(false);
     }
@@ -25,6 +26,7 @@ export function usePatients() {
       setPatients(patients.filter(p => p.id !== id));
       return true;
     } catch (err) {
+        console.error(err);
       setError("Lỗi khi xóa hồ sơ");
       return false;
     }

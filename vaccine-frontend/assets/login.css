@@ -466,7 +466,7 @@ line-height: normal;
 /* Primary Button - Blue */
 .btn-primary {
   background: linear-gradient(135deg, #1d66c2 0%, #1d4ed8 100%);
-  margin-top: 4px;
+  /* margin-top: 4px; */
 }
 
 .btn-primary:hover:not(:disabled) {

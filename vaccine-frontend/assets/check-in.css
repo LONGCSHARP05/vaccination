@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* --- Cấu hình chung & Reset --- */
+.checkin-wrapper {
+  width: 100%;
+  max-width: 72rem; /* max-w-6xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem; /* p-6 */
+  font-family: 'Inter', sans-serif;
+  color: #1e293b;
+  box-sizing: border-box;
+}
+
+.checkin-wrapper * {
+  box-sizing: border-box;
+}
+
+.font-headline {
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Icons */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* --- Layout Grid --- */
+.checkin-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2rem; /* gap-8 */
+  margin-top: 2rem;
+}
+
+.checkin-col-left {
+  grid-column: span 12 / span 12;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* space-y-6 */
+}
+
+.checkin-col-right {
+  grid-column: span 12 / span 12;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .checkin-col-left { grid-column: span 7 / span 7; }
+  .checkin-col-right { grid-column: span 5 / span 5; }
+}
+
+/* --- Typography --- */
+.page-title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.page-subtitle {
+  color: #424655;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+}
+
+/* --- Cards (Khối bao) --- */
+.checkin-card {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkin-card.overflow-hidden {
+  overflow: hidden;
+}
+
+.card-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.375rem;
+  height: 100%;
+  background-color: #0d6efd;
+}
+
+/* --- Search Input & Buttons --- */
+.search-group {
+  display: flex;
+  gap: 0.75rem;
+  height: 40px; /* Khóa cứng chiều cao chuẩn cho thanh công cụ */
+  align-items: stretch;
+}
+
+/* .input-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  background-color: #f3f4f5;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+  transition: all 0.2s ease;
+  height: 100%; /* Căng đầy 44px */
+/* } */
+
+/* focus-within: Khi user click vào input bên trong, sẽ highlight toàn bộ khối wrapper bên ngoài */
+.input-wrapper:focus-within {
+  border-color: #0057cd;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(0, 87, 205, 0.1);
+} */
+
+.input-icon {
+  color: #94a3b8;
+  font-size: 1.25rem; /* Fix cứng size icon */
+  display: flex;
+  line-height: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input {
+  box-shadow: none !important;
+  flex: 1;
+  height: 100%; /* Căng đầy 44px */
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0 0 0 0.5rem; /* Bỏ padding trên/dưới để flex tự canh giữa hoàn hảo */
+  font-size: 0.875rem;
+  color: #3b2d1e;
+  outline: none;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-primary {
+  height: 100%; /* Chắc chắn bằng đúng 44px của input */
+  background: linear-gradient(135deg, #0057cd 0%, #0d6efd 100%);
+  color: #ffffff;
+  padding: 0 1.25rem; /* Chỉ giữ padding ngang cho hai bên */
+  border-radius: 0.5rem;
+  font-size: 0.875rem; /* Cỡ chữ bằng đúng với ô input (14px) */
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Phần btn-primary-block dưới đây dùng cho các nút lớn bên cột Lịch hẹn (bạn giữ nguyên) */
+.btn-primary-block {
+  width: 100%;
+  background: linear-gradient(135deg, #0057cd 0%, #0d6efd 100%);
+  color: #ffffff;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  opacity: 0.9;
+  transition: all 0.2s;
+}
+
+.btn-primary-block:hover {
+  opacity: 1;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon {
+  color: #0057cd;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-icon:hover {
+  background-color: #f3f4f5;
+}
+
+/* --- Patient Info Section --- */
+.patient-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.patient-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.patient-avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #e1e3e4;
+  color: #0057cd;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.patient-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.patient-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.badge-id {
+  background-color: #e7e8e9;
+  color: #334155;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-status {
+  color: #059669;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+.badge-status .material-symbols-outlined {
+  font-size: 16px;
+  margin-right: 4px;
+}
+
+.patient-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  row-gap: 1rem;
+  column-gap: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.info-item p.label {
+  font-size: 0.75rem;
+  color: #424655;
+  margin: 0 0 0.25rem 0;
+}
+
+.info-item p.value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Appointments Section --- */
+.appointments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.appointment-count {
+  background-color: #a0baff;
+  color: #2e4986;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+}
+
+.appointment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.appointment-item {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #f8f9fa;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.appointment-item:hover {
+  background-color: #f3f4f5;
+  border-color: #cbd5e1;
+}
+
+.apt-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.apt-item-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.apt-item-icon {
+  color: #0057cd;
+  font-size: 20px;
+}
+
+.apt-item-title {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.apt-item-time {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #64748b;
+  background-color: #e7e8e9;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.apt-item-desc {
+  font-size: 0.75rem;
+  color: #424655;
+  margin: 0.5rem 0 0 0;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f1f5f9;
+}

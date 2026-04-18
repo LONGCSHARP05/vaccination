@@ -28,7 +28,8 @@ class Appointment(Base, UuidMixin):
     AppointmentDate = Column(DateTime, nullable=False)
     Status = Column(SQLEnum(AppointmentStatusEnum), nullable=False, default="PENDING")
     Note = Column(Text, nullable=True)
-
+    CreatedAt = Column(DateTime, default=datetime.now)
+    
     patient = relationship("Patient", back_populates="appointments")
     created_by = relationship("Staff", back_populates="appointments_created")
     vaccination_sessions = relationship("VaccinationSession", back_populates="appointment")
