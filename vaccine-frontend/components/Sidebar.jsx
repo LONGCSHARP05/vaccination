@@ -11,7 +11,9 @@ import {
   BrainCircuit, 
   UserCircle, 
   LogOut,
-  Menu
+  Menu,
+  Activity,
+  Clock
 } from 'lucide-react';
 import '../assets/sidebar.css';
 
@@ -20,6 +22,8 @@ const MENU_ITEMS = [
   { path: '/vaccines', label: 'Quản lý danh mục vaccine', icon: Syringe },
   { path: '/staff/patients', label: 'Quản lý sổ tiêm chủng', icon: BookOpenText },
   { path: '/appointments', label: 'Lịch tiêm chủng', icon: CalendarDays },
+  { path: '/waiting-for-injection', label: 'Chờ tiêm', icon: Clock },
+  { path: '/post-vaccine-tracking', label: 'Theo dõi', icon: Activity },
   { path: '/facilities', label: 'Đơn vị và nhân sự', icon: Building2 },
   { path: '/ai-insights', label: 'Thống kê và dự báo AI', icon: BrainCircuit },
 ];
