@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI
 from routers import vaccination_sessions
-from routers.page_routers import dashboard
+from routers.page_routers import dashboard, reception
 from routers import auth, users, password, roles, patients, role_permission, appointments # khai báo router auth
 from fastapi.middleware.cors import CORSMiddleware
 # thêm middleware CORS để cho phép truy cập từ các nguồn khác nhau
@@ -29,7 +29,7 @@ app.include_router(role_permission.router)
 app.include_router(appointments.router)
 app.include_router(dashboard.router)
 app.include_router(vaccination_sessions.router)
-
+app.include_router(reception.router)
 @app.get("/") # endpoint gốc để kiểm tra trạng thái ứng dụng
 def root():
     return {"status": "ok"}
