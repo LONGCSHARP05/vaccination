@@ -16,7 +16,7 @@ const AppRoutes = () => {
         <Route path="/dashboard" element={<DashboardOverview />} />
         <Route path="/reception" element={<Reception />} />
         <Route path="/check-in" element={<CheckIn />} />
-        <Route path="/doctor-workspace" element={<DoctorWorkspace />} />
+        <Route path="/bac-si/workspace/:sessionID" element={<DoctorWorkspace />} />
         <Route path="/waiting-list" element={<WaitingList />} />
       </Route>
       <Route path="/login" element={<Login />} />

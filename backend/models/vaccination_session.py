@@ -45,8 +45,8 @@ class VaccinationDetail(Base, UuidMixin):
     VaccinationSessionID = Column(Integer, ForeignKey("VaccinationSession.VaccinationSessionID"), nullable=False)
     VaccineDetailID = Column(Integer, ForeignKey("VaccineDetail.VaccineDetailID"), nullable=False)
     SubLotID = Column(Integer, ForeignKey("SubLot.SubLotID"), nullable=False)
-    DoseNumber = Column(Integer, nullable=False)
-    QuantityUsed = Column(Integer, nullable=False, default=1)
+    DoseNumber = Column(Integer, nullable=False)  # Thứ tự mũi tiêm trong phác đồ
+    QuantityUsed = Column(Integer, nullable=False, default=1)  # Số liều sử dụng (thường là 1, nhưng có thể >1 nếu dùng chung vỉ)
     AdministeredByID = Column(Integer, ForeignKey("Staff.StaffID"), nullable=False)
 
     vaccination_session = relationship("VaccinationSession", back_populates="vaccination_details")

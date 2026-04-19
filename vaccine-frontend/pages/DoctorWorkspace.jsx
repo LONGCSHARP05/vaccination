@@ -33,7 +33,7 @@ const DoctorWorkspace = () => {
   if (error) {
     return (
       <div className="dw-error-page">
-        <p>⚠ Không thể tải dữ liệu: {error}</p>
+        <p>Không thể tải dữ liệu: {error}</p>
         <button onClick={() => navigate(-1)}>← Quay lại</button>
       </div>
     );
