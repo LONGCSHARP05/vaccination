@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from fastapi import APIRouter, Depends, HTTPException
 import db
 from models.facility import Staff
@@ -9,20 +11,21 @@ from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/api/v1/vaccination-sessions", tags=["vaccination-sessions"])
 
-@router.post("/")
+@router.post("/register-session")
 def create_reception_session(
     patient_id: int,
     appointment_id: int = None,
     db: Session = Depends(get_db),
-    user: CurrentUser = Depends(get_current_user) # Lấy Staff đang đăng nhập
+    current_user: CurrentUser = Depends(get_current_user) # Lấy Staff đang đăng nhập
 ):
     
-    user = db.query(UserAccount).filter(UserAccount.UserID == user.UserID).first()
-    staff_id = db.query(Staff.StaffID).join(UserAccount, UserAccount.UserID == user.UserID).scalar() # Giả sử UserID chính là StaffID, nếu không bạn cần truy vấn thêm để lấy StaffID từ UserAccount 
+    user = db.query(UserAccount).filter(UserAccount.UserID == current_user.id).first()
+    staff = db.query(Staff).join(UserAccount, UserAccount.UserID == user.UserID).first() # Giả sử UserID chính là StaffID, nếu không bạn cần truy vấn thêm để lấy StaffID từ UserAccount 
     new_session = VaccinationSession(
         PatientID=patient_id,
         AppointmentID=appointment_id,
-        StaffID=staff_id, # StaffId lấy từ token
+        VaccinationDate=datetime.now(),
+        StaffID=staff.StaffID, # StaffId lấy từ token
         Status="RECEIVED" # Trạng thái tiếp nhận
     )
     db.add(new_session)

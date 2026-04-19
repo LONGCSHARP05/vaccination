@@ -1,0 +1,126 @@
+/* CustomerDetailModal.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap');
+
+.cdm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.cdm-modal {
+  background: #fff;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+  overflow: hidden;
+  animation: modalIn 0.25s ease;
+}
+@keyframes modalIn {
+  from { transform: scale(0.94) translateY(8px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Header */
+.cdm-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #0057cd 0%, #2563eb 100%);
+}
+.cdm-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 1.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cdm-name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 1.125rem;
+  color: #fff;
+  margin: 0;
+}
+.cdm-sub {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.7);
+  margin: 0.25rem 0 0;
+}
+.cdm-close {
+  margin-left: auto;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cdm-close:hover { background: rgba(255,255,255,0.35); }
+
+/* Body */
+.cdm-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 0; }
+.cdm-field {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  align-items: baseline;
+}
+.cdm-field:last-child { border-bottom: none; }
+.cdm-field-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Manrope', sans-serif;
+}
+.cdm-field-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1e293b;
+  font-family: 'Inter', sans-serif;
+  word-break: break-word;
+}
+
+/* Footer */
+.cdm-footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: flex-end;
+}
+.cdm-btn-close {
+  height: 40px;
+  padding: 0 1.5rem;
+  background: #f1f5f9;
+  color: #475569;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cdm-btn-close:hover { background: #e2e8f0; }
