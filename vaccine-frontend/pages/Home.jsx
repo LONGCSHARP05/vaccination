@@ -14,6 +14,10 @@ function Home() {
     navigate("/vaccines");
   };
 
+  const handleNavigateWaiting = () => {
+    navigate("/waiting-for-injection");
+  };
+
   return (
     <div className="home-page">
       <header className="home-header">
@@ -43,13 +47,11 @@ function Home() {
             <button className="card-btn">Vào trang</button>
           </div>
 
-          <div className="menu-card disabled">
-            <div className="card-icon">📅</div>
-            <h3>Lịch tiêm chủng</h3>
-            <p>Quản lý và theo dõi lịch tiêm chủng của gia đình</p>
-            <button className="card-btn" disabled>
-              Sắp ra mắt
-            </button>
+          <div className="menu-card" onClick={handleNavigateWaiting}>
+            <div className="card-icon">💉</div>
+            <h3>Chờ tiêm</h3>
+            <p>Quản lý danh sách bệnh nhân đang chờ tiêm</p>
+            <button className="card-btn">Vào trang</button>
           </div>
 
           <div className="menu-card disabled">
